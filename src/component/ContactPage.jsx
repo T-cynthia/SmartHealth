@@ -1,9 +1,9 @@
+// src/component/ContactPage.jsx
 import React, { useState } from 'react';
 import emailjs from 'emailjs-com';
 
 const ContactPage = () => {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -11,30 +11,31 @@ const ContactPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+  
+    // Send form data to EmailJS
+    emailjs.sendForm(
+      'service_6pe13hr', 
+      'template_tyvlarp', 
+      e.target, 
+      'JyXfs2NTf3RTLdPy9' 
+    )
+    
 
-    setLoading(true);
-    // EmailJS service integration
-    emailjs
-      .send(
-        'your_service_id', // Your service ID from EmailJS
-        'your_template_id', // Your template ID from EmailJS
-        form, // Form data to send
-        'your_user_id' // Your user ID from EmailJS
-      )
       .then(
-        (response) => {
-          alert(`Thanks ${form.name}! We received your message: "${form.message}"`);
-          setForm({ name: '', email: '', message: '' });
+        (result) => {
+          console.log('Email sent successfully:', result.text);
+          alert(`Thanks ${form.name}! We received your message.`);
         },
         (error) => {
-          alert('Oops! Something went wrong. Please try again.');
-          console.error('EmailJS error:', error);
+          console.log('Error sending email:', error.text); // Log the error response
+          alert(`Error: ${error.text}`);  // Show detailed error in alert
         }
-      )
-      .finally(() => {
-        setLoading(false);
-      });
+      );
+  
+    // Clear form
+    setForm({ name: '', email: '', message: '' });
   };
+  
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-100 to-green-300 px-4 py-12">
@@ -77,9 +78,8 @@ const ContactPage = () => {
           <button
             type="submit"
             className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition-all"
-            disabled={loading}
           >
-            {loading ? 'Sending...' : 'Send Message 💌'}
+            Send Message 💌
           </button>
         </form>
       </div>
