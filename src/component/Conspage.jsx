@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-function ConsultationPage() {
+const ConsultationPage = () => {
   const [doctor, setDoctor] = useState('');
   const [time, setTime] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(`Booked consultation with Dr. ${doctor} at ${time}`);
-  };
+  const [amount] = useState(50); // Assume fixed price for now
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-white px-4">
       <div className="max-w-md w-full bg-gray-100 p-8 rounded-xl shadow-lg">
         <h2 className="text-2xl font-bold mb-4 text-center text-blue-700">Book a Consultation</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form className="space-y-4">
           <div>
             <label className="block text-gray-700 mb-1">Select Doctor</label>
             <select
@@ -38,13 +35,25 @@ function ConsultationPage() {
               required
             />
           </div>
-          <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
-            Book Now
-          </button>
+          
+          {/* Link to Payment Page with the state */}
+          <Link
+            to={{
+              pathname: "/payment",
+              state: { doctor, time, amount },
+            }}
+          >
+            <button
+              type="button"
+              className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
+            >
+              Proceed to Payment
+            </button>
+          </Link>
         </form>
       </div>
     </div>
   );
-}
+};
 
 export default ConsultationPage;

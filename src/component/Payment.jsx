@@ -13,12 +13,13 @@ const Payment = () => {
     try {
       setLoading(true);
       // Sending payment data to the backend (same as before)
-      const response = await axios.post('/api/payment/create-checkout-session', {
+      await axios.post('/api/payment/create-checkout-session', {
         token,
         amount,
         doctor,
         appointmentDate: time,
       });
+
       setPaymentStatus('✅ Payment Successful!');
     } catch (error) {
       setPaymentStatus('❌ Payment Failed. Please try again.');

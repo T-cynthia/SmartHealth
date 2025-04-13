@@ -1,17 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Navbar from './Navbar';
-import RegNewborn from './RegNewborn'; 
-import Regpage from './Regpage';
 import Footer from './Footer';
 
 const Homepage = () => {
   return (
-    <>
-      <Navbar />
-      <div className="bg-blue-50 min-h-screen">
-        {/* Hero Section with background image */}
-        <section className="text-center py-16 px-4 md:px-20 bg-cover bg-center" style={{ backgroundImage: "url('https://i.pinimg.com/736x/51/1e/41/511e419a8f9812affb0a585918a06222.jpg')" }}>
+    <div className="flex flex-col min-h-screen bg-blue-50">
+  
+     
+
+      {/* Main Content */}
+      <main className="flex-grow">
+        {/* Hero Section */}
+        <section
+          className="text-center py-16 px-4 md:px-20 bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "url('https://i.pinimg.com/736x/51/1e/41/511e419a8f9812affb0a585918a06222.jpg')",
+          }}
+        >
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-md">
             Welcome to Smart Healthcare
           </h1>
@@ -19,13 +25,22 @@ const Homepage = () => {
             Helping you track vaccinations, book consultations, and ensure your newborn's health with ease and care.
           </p>
           <div className="mt-8 flex justify-center gap-4">
-            <Link to="/register" className="bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition">
+            <Link
+              to="/register"
+              className="bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition"
+            >
               Register Newborn
             </Link>
-            <Link to="/vaccination" className="bg-yellow-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-600 transition">
-  Track Vaccinations
-  </Link>
-            <Link to="/appointment" className="bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 transition">
+            <Link
+              to="/vaccination"
+              className="bg-yellow-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-600 transition"
+            >
+              Track Vaccinations
+            </Link>
+            <Link
+              to="/consultation"
+              className="bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 transition"
+            >
               Book Consultation
             </Link>
           </div>
@@ -53,20 +68,22 @@ const Homepage = () => {
           </div>
         </section>
 
-        {/* CTA */}
+        {/* Call To Action Section */}
         <section className="text-center py-16 bg-blue-100">
           <h2 className="text-3xl font-bold text-blue-700 mb-4">Ready to get started?</h2>
           <p className="text-gray-600 mb-6">Join thousands of parents using SmartHealth today.</p>
-          <Link to="/register" className="bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition">
+          <Link
+            to="/register"
+            className="bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition"
+          >
             Register Now
           </Link>
-          <RegNewborn />
-             <Regpage />
-
-          <Footer />
         </section>
-      </div>
-    </>
+      </main>
+
+      {/* Footer */}
+      <Footer />
+    </div>
   );
 };
 

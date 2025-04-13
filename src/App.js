@@ -4,6 +4,9 @@ import Home from './component/Homepage';
 import Register from './component/Regpage';
 import ConsultationPage from './component/Conspage';
 import RegisterNewborn from './component/RegNewborn';
+import Payment from './component/Payment';
+import PaymentSuccess from './component/PaymentSuccess';
+import PaymentFailure from './component/PaymentFailure';
 import Navbar from './component/Navbar';
 import VaccineTracker from './component/VaccineTracker';
 import './component/global.css'; 
@@ -18,6 +21,9 @@ function App() {
         <Route path="/consultation" element={<ConsultationPage />} />
         <Route path="/regnewborn" element={<RegisterNewborn />} />
         <Route path="/vaccination" element={<VaccineTracker />} />
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/payment/success" element={<PaymentSuccess />} />
+        <Route path="/payment/cancel" element={<PaymentFailure />} />
       </Routes>
     </Router>
   );
