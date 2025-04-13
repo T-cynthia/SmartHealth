@@ -11,6 +11,8 @@ const Navbar = () => {
           <Link to="/register" className="text-gray-700 hover:text-green-600 transition">Register</Link>
           
           <Link to="/consultation">Book Consultation</Link>
+          <Link to="/contact" className="text-gray-800 hover:text-green-600 font-medium">Contact</Link>
+
 
         </div>
       </div>

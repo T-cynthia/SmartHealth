@@ -1,8 +1,9 @@
-// src/component/ContactPage.jsx
 import React, { useState } from 'react';
+import emailjs from 'emailjs-com';
 
 const ContactPage = () => {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -10,8 +11,29 @@ const ContactPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Thanks ${form.name}! We received your message: "${form.message}"`);
-    setForm({ name: '', email: '', message: '' });
+
+    setLoading(true);
+    // EmailJS service integration
+    emailjs
+      .send(
+        'your_service_id', // Your service ID from EmailJS
+        'your_template_id', // Your template ID from EmailJS
+        form, // Form data to send
+        'your_user_id' // Your user ID from EmailJS
+      )
+      .then(
+        (response) => {
+          alert(`Thanks ${form.name}! We received your message: "${form.message}"`);
+          setForm({ name: '', email: '', message: '' });
+        },
+        (error) => {
+          alert('Oops! Something went wrong. Please try again.');
+          console.error('EmailJS error:', error);
+        }
+      )
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
@@ -55,8 +77,9 @@ const ContactPage = () => {
           <button
             type="submit"
             className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition-all"
+            disabled={loading}
           >
-            Send Message 💌
+            {loading ? 'Sending...' : 'Send Message 💌'}
           </button>
         </form>
       </div>

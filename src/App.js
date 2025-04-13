@@ -9,6 +9,7 @@ import PaymentSuccess from './component/PaymentSuccess';
 import PaymentFailure from './component/PaymentFailure';
 import Navbar from './component/Navbar';
 import VaccineTracker from './component/VaccineTracker';
+import ContactPage from './component/ContactPage'; 
 import './component/global.css'; 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/payment" element={<Payment />} />
         <Route path="/payment/success" element={<PaymentSuccess />} />
         <Route path="/payment/cancel" element={<PaymentFailure />} />
+        <Route path="/contact" element={<ContactPage />} />
       </Routes>
     </Router>
   );
