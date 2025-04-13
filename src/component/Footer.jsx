@@ -27,8 +27,9 @@ const Footer = () => {
               <img src="https://www.svgrepo.com/show/452196/facebook-1.svg" alt="Facebook" className="w-6 h-6" />
             </a>
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-              <img src="https://www.svgrepo.com/show/452240/twitter-1.svg" alt="Twitter" className="w-6 h-6" />
-            </a>
+  <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" className="w-6 h-6" />
+</a>
+
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
               <img src="https://www.svgrepo.com/show/452229/instagram-1.svg" alt="Instagram" className="w-6 h-6" />
             </a>
