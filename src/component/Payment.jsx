@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom';
 
 const Payment = () => {
   const location = useLocation();
-  const { doctor, time, amount } = location.state || {}; // Get data from the consultation page
+  const { doctor, time, amount } = location.state || {}; 
   const [paymentStatus, setPaymentStatus] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -41,9 +41,9 @@ const Payment = () => {
         </p>
 
         <StripeCheckout
-          stripeKey="your_publishable_key" // ⚠️ Replace this with your real Stripe public key
+          stripeKey="your_publishable_key" 
           token={handleToken}
-          amount={amount * 100} // Convert dollars to cents
+          amount={amount * 100} // 
           name="Healthcare Consultation"
           description="Pay for your doctor consultation"
           panelLabel="Pay Now"
