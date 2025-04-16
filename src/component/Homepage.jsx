@@ -6,8 +6,6 @@ const Homepage = () => {
   return (
     <div className="flex flex-col min-h-screen bg-blue-50">
   
-     
-
       {/* Main Content */}
       <main className="flex-grow">
         {/* Hero Section */}
@@ -19,7 +17,7 @@ const Homepage = () => {
           }}
         >
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-md">
-            Welcome to Smart Healthcare
+            Welcome to KiddoCare
           </h1>
           <p className="text-lg text-white max-w-xl mx-auto drop-shadow-md">
             Helping you track vaccinations, book consultations, and ensure your newborn's health with ease and care.
@@ -27,19 +25,19 @@ const Homepage = () => {
           <div className="mt-8 flex justify-center gap-4">
             <Link
               to="/register"
-              className="bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition"
+              className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
             >
               Register Newborn
             </Link>
             <Link
               to="/vaccination"
-              className="bg-yellow-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-600 transition"
+              className="bg-teal-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-teal-700 transition"
             >
               Track Vaccinations
             </Link>
             <Link
               to="/consultation"
-              className="bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 transition"
+              className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
             >
               Book Consultation
             </Link>
@@ -57,12 +55,12 @@ const Homepage = () => {
               <h3 className="text-xl font-bold text-blue-700 mb-2">Vaccine Tracker</h3>
               <p className="text-gray-600">Get timely reminders for your child’s vaccinations.</p>
             </div>
-            <div className="bg-green-100 p-6 rounded-xl shadow-md hover:shadow-lg transition">
-              <h3 className="text-xl font-bold text-green-700 mb-2">Consult Experts</h3>
+            <div className="bg-teal-100 p-6 rounded-xl shadow-md hover:shadow-lg transition">
+              <h3 className="text-xl font-bold text-teal-700 mb-2">Consult Experts</h3>
               <p className="text-gray-600">Book appointments with qualified doctors easily.</p>
             </div>
-            <div className="bg-purple-100 p-6 rounded-xl shadow-md hover:shadow-lg transition">
-              <h3 className="text-xl font-bold text-purple-700 mb-2">Smart Notifications</h3>
+            <div className="bg-indigo-100 p-6 rounded-xl shadow-md hover:shadow-lg transition">
+              <h3 className="text-xl font-bold text-indigo-700 mb-2">Smart Notifications</h3>
               <p className="text-gray-600">Receive helpful health tips and schedule alerts.</p>
             </div>
           </div>
@@ -71,10 +69,10 @@ const Homepage = () => {
         {/* Call To Action Section */}
         <section className="text-center py-16 bg-blue-100">
           <h2 className="text-3xl font-bold text-blue-700 mb-4">Ready to get started?</h2>
-          <p className="text-gray-600 mb-6">Join thousands of parents using SmartHealth today.</p>
+          <p className="text-gray-600 mb-6">Join thousands of parents using KiddoCare today.</p>
           <Link
             to="/register"
-            className="bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition"
+            className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
           >
             Register Now
           </Link>

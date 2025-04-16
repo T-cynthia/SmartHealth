@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="bg-gradient-to-r from-green-700 to-green-500 text-white py-10 px-6 mt-auto">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
         <div>
-          <h3 className="text-2xl font-bold mb-2">Smart Healthcare</h3>
+          <h3 className="text-2xl font-bold mb-2">KiddoCare</h3>
           <p className="text-sm">
             Revolutionizing care through technology. We care for your well-being and your baby's future. 💙👶
           </p>
@@ -38,7 +38,7 @@ const Footer = () => {
       </div>
 
       <div className="text-center text-sm mt-10 border-t border-white/20 pt-4">
-        &copy; {new Date().getFullYear()} Smart Healthcare. All rights reserved.
+        &copy; {new Date().getFullYear()} KiddoCare . All rights reserved.
       </div>
     </footer>
   );
