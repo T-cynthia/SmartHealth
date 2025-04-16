@@ -38,9 +38,9 @@ const ContactPage = () => {
   
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-100 to-green-300 px-4 py-12">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300 px-4 py-12">
       <div className="bg-white rounded-2xl shadow-2xl p-10 w-full max-w-xl">
-        <h2 className="text-3xl font-bold text-green-700 mb-6 text-center">📬 Contact Us</h2>
+        <h2 className="text-3xl font-bold text-blue-700 mb-6 text-center">📬 Contact Us</h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label className="block text-gray-700 font-medium mb-2">Name</label>
@@ -49,7 +49,7 @@ const ContactPage = () => {
               name="name"
               value={form.name}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
@@ -60,7 +60,7 @@ const ContactPage = () => {
               name="email"
               value={form.email}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
@@ -71,13 +71,13 @@ const ContactPage = () => {
               rows="4"
               value={form.message}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
           <button
             type="submit"
-            className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition-all"
+            className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition-all"
           >
             Send Message 💌
           </button>

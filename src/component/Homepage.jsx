@@ -19,7 +19,7 @@ const Homepage = () => {
           }}
         >
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-md">
-            Welcome to Smart Healthcare
+            Welcome to KiddoCare
           </h1>
           <p className="text-lg text-white max-w-xl mx-auto drop-shadow-md">
             Helping you track vaccinations, book consultations, and ensure your newborn's health with ease and care.
@@ -33,7 +33,7 @@ const Homepage = () => {
             </Link>
             <Link
               to="/vaccination"
-              className="bg-yellow-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-600 transition"
+              className="bg-gray-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-400 transition"
             >
               Track Vaccinations
             </Link>
@@ -71,7 +71,7 @@ const Homepage = () => {
         {/* Call To Action Section */}
         <section className="text-center py-16 bg-blue-100">
           <h2 className="text-3xl font-bold text-blue-700 mb-4">Ready to get started?</h2>
-          <p className="text-gray-600 mb-6">Join thousands of parents using SmartHealth today.</p>
+          <p className="text-gray-600 mb-6">Join thousands of parents using KiddoCare today.</p>
           <Link
             to="/register"
             className="bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition"
