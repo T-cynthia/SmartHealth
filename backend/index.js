@@ -1,25 +1,18 @@
+// index.js
 const { MongoClient } = require('mongodb');
+require('dotenv').config();
 
-const uri = " ";
+const uri = process.env.MONGO_URI;
 const client = new MongoClient(uri);
 
-async function run() {
-  try {
+async function connectToMongo() {
+  if (!client.topology?.isConnected()) {
     await client.connect();
     console.log("✅ Connected to MongoDB Atlas!");
-
-    const db = client.db("smart_healthcare"); // your DB name
-    const collection = db.collection("patients"); // your collection
-
-    // Example: Insert a document
-    const result = await collection.insertOne({ name: "Baby John", age: 2 });
-    console.log("Document inserted:", result.insertedId);
-
-  } catch (err) {
-    console.error("❌ Connection error:", err);
-  } finally {
-    await client.close();
   }
 }
 
-run();
+module.exports = {
+  connectToMongo,
+  client
+};
