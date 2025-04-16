@@ -31,11 +31,7 @@ const Homepage = () => {
             </Link>
             <Link
               to="/vaccination"
-<<<<<<< HEAD
               className="bg-teal-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-teal-700 transition"
-=======
-              className="bg-gray-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-400 transition"
->>>>>>> 70fae85eb1b78aad72d738d59a03ed18112db62c
             >
               Track Vaccinations
             </Link>
@@ -71,15 +67,9 @@ const Homepage = () => {
         </section>
 
         {/* Call To Action Section */}
-<<<<<<< HEAD
-        <section className="text-center py-16 bg-teal-100">
-          <h2 className="text-3xl font-bold text-teal-700 mb-4">Ready to get started?</h2>
-          <p className="text-gray-600 mb-6">Join thousands of parents using SmartHealth today.</p>
-=======
         <section className="text-center py-16 bg-blue-100">
           <h2 className="text-3xl font-bold text-blue-700 mb-4">Ready to get started?</h2>
           <p className="text-gray-600 mb-6">Join thousands of parents using KiddoCare today.</p>
->>>>>>> 70fae85eb1b78aad72d738d59a03ed18112db62c
           <Link
             to="/register"
             className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
