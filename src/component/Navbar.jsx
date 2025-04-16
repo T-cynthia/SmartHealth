@@ -15,7 +15,9 @@ const Navbar = () => {
           <Link to="/health-tips" className="text-blue-600 hover:underline">
   Health Tips
 </Link>
-
+<Link to="/admin" className="bg-blue-600 text-white px-6 py-3 rounded-lg">
+          Admin Panel
+        </Link>
 
         </div>
       </div>

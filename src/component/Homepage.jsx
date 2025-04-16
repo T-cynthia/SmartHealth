@@ -5,7 +5,6 @@ import Footer from './Footer';
 const Homepage = () => {
   return (
     <div className="flex flex-col min-h-screen bg-blue-50">
-  
       {/* Main Content */}
       <main className="flex-grow">
         {/* Hero Section */}
