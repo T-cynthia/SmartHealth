@@ -4,10 +4,12 @@ function RegistrationPage() {
   const [formData, setFormData] = useState({
     // Mother Info
     motherName: '',
+    motherEmail:'',
     motherPhone: '',
 
     // Father Info
     fatherName: '',
+    fatherEmail:'',
     fatherPhone: '',
 
     // Newborn Info
@@ -35,8 +37,10 @@ function RegistrationPage() {
     // Clear form
     setFormData({
       motherName: '',
+      motherEmail:'',
       motherPhone: '',
       fatherName: '',
+      fatherEmail:'',
       fatherPhone: '',
       childName: '',
       dob: '',
@@ -59,6 +63,7 @@ function RegistrationPage() {
           <div>
             <h3 className="text-lg font-semibold text-gray-700 mb-2">Mother's Information</h3>
             <input name="motherName" value={formData.motherName} onChange={handleChange} placeholder="Full Name" className="w-full p-3 mb-2 border rounded" required />
+            <input name="fatherName" value={formData.motherEmail} onChange={handleChange} placeholder=" Email" className="w-full p-3 mb-2 border rounded" />
             <input name="motherPhone" value={formData.motherPhone} onChange={handleChange} placeholder="Phone Number" type="tel" className="w-full p-3 mb-2 border rounded" />
           </div>
 
@@ -66,6 +71,7 @@ function RegistrationPage() {
           <div>
             <h3 className="text-lg font-semibold text-gray-700 mb-2">Father's Information</h3>
             <input name="fatherName" value={formData.fatherName} onChange={handleChange} placeholder="Full Name" className="w-full p-3 mb-2 border rounded" />
+            <input name="fatherName" value={formData.fatherEmail} onChange={handleChange} placeholder=" Email" className="w-full p-3 mb-2 border rounded" />
             <input name="fatherPhone" value={formData.fatherPhone} onChange={handleChange} placeholder="Phone Number" type="tel" className="w-full p-3 mb-2 border rounded" />
           </div>
 

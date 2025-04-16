@@ -12,6 +12,9 @@ const Navbar = () => {
           
           <Link to="/consultation">Book Consultation</Link>
           <Link to="/contact" className="text-gray-800 hover:text-green-600 font-medium">Contact</Link>
+          <Link to="/health-tips" className="text-blue-600 hover:underline">
+  Health Tips
+</Link>
 
 
         </div>
