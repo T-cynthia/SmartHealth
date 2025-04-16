@@ -1,25 +1,18 @@
-const { MongoClient } = require('mongodb');
 
-const uri = " ";
-const client = new MongoClient(uri);
+const mongoose = require('mongoose');
+const uri = "mongodb+srv://sayReine:12345@kiddocare.oxfeymk.mongodb.net/?retryWrites=true&w=majority&appName=kiddocare";
+
+const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
 
 async function run() {
   try {
-    await client.connect();
-    console.log("✅ Connected to MongoDB Atlas!");
-
-    const db = client.db("smart_healthcare"); // your DB name
-    const collection = db.collection("patients"); // your collection
-
-    // Example: Insert a document
-    const result = await collection.insertOne({ name: "Baby John", age: 2 });
-    console.log("Document inserted:", result.insertedId);
-
-  } catch (err) {
-    console.error("❌ Connection error:", err);
+    // Create a Mongoose client with a MongoClientOptions object to set the Stable API version
+    await mongoose.connect(uri, clientOptions);
+    await mongoose.connection.db.admin().command({ ping: 1 });
+    console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
-    await client.close();
+    // Ensures that the client will close when you finish/error
+    await mongoose.disconnect();
   }
 }
-
-run();
+run().catch(console.dir);
