@@ -61,8 +61,9 @@ const ManageNurses = () => {
           {nurses.map(nurse => (
             <tr key={nurse._id}>
               <td className="p-2 border">{nurse.name}</td>
-              <td className="p-2 border">{nurse.email}</td>
+              <td className="p-2 border">{nurse.password}</td>
               <td className="p-2 border">{nurse.phone}</td>
+              <td className="p-2 border">{nurse.address}</td>
               <td className="p-2 border">{new Date(nurse.createdAt).toLocaleDateString()}</td>
             </tr>
           ))}
