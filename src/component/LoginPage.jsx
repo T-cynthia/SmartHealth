@@ -1,59 +1,63 @@
-// src/component/LoginPage.js
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
-  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [role, setRole] = useState('parent');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Add authentication logic here
-    navigate('/'); // Redirect to home page after login
+    // handle login logic here
+    console.log({ phone, role, password });
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-teal-50 px-4 py-10">
-      <div className="max-w-md w-full bg-white p-8 rounded-xl shadow-lg">
-        <h2 className="text-2xl font-bold mb-6 text-center text-teal-700">Login to Your Account</h2>
+    <div className="min-h-screen bg-white flex items-center justify-center px-4">
+      <div className="max-w-md w-full bg-blue-50 p-8 rounded-xl shadow-lg">
+        <h2 className="text-2xl font-bold text-black mb-6 text-center">Login to KiddoCare</h2>
 
-        <form onSubmit={handleLogin} className="space-y-6">
+        <form onSubmit={handleLogin} className="space-y-4">
           <div>
-            <label className="block text-gray-700 mb-1">Email</label>
+            <label className="block text-black mb-1">Phone Number</label>
             <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full p-3 border border-teal-300 rounded-lg"
+              type="tel"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              className="w-full p-3 border border-gray-300 rounded-lg"
               required
+              placeholder="e.g. +250 78XXXXXXX"
             />
           </div>
 
           <div>
-            <label className="block text-gray-700 mb-1">Password</label>
+            <label className="block text-black mb-1">Role</label>
+            <select
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              className="w-full p-3 border border-gray-300 rounded-lg"
+            >
+              <option value="parent">Parent</option>
+              <option value="nurse">Nurse / Doctor</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-black mb-1">Password</label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-3 border border-teal-300 rounded-lg"
+              className="w-full p-3 border border-gray-300 rounded-lg"
               required
             />
           </div>
 
           <button
             type="submit"
-            className="w-full bg-teal-600 text-white py-2 rounded-lg hover:bg-teal-700 transition"
+            className="w-full bg-blue-600 text-white py-2 text-sm rounded-md hover:bg-blue-700 transition"
           >
             Login
           </button>
-
-          <p className="text-center mt-4">
-            Don't have an account?{" "}
-            <a href="/signup" className="text-teal-600 hover:text-teal-700">
-              Sign up
-            </a>
-          </p>
         </form>
       </div>
     </div>

@@ -8,14 +8,10 @@ const Navbar = () => {
         <Link to="/" className="text-2xl font-bold text-blue-600">KiddoCare</Link>
         <div className="space-x-6">
           <Link to="/" className="text-gray-700 hover:text-blue-600 transition">Home</Link>
-          <Link to="/register" className="text-gray-700 hover:text-green-600 transition">Register</Link>
-          
-          <Link to="/consultation">Book Consultation</Link>
-          <Link to="/contact" className="text-gray-800 hover:text-green-600 font-medium">Contact</Link>
-          <Link to="/health-tips" className="text-blue-600 hover:underline">
-  Health Tips
-</Link>
-
+          <Link to="/contact" className="text-gray-800 hover:text-blue-600 font-medium">Contact</Link>
+          <Link to="/login" className="bg-blue-600 text-white px-6 py-3 rounded-lg  hover:bg-blue-500 m-5">
+          Admin Panel
+        </Link>
 
         </div>
       </div>
