@@ -1,14 +1,54 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../AuthContext'; // Import useAuth from AuthContext
 
 const LoginPage = () => {
   const [phone, setPhone] = useState('');
-  const [role, setRole] = useState('parent');
+  const [role, setRole] = useState('nurse');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
-  const handleLogin = (e) => {
+  const navigate = useNavigate();
+  const { setUser } = useAuth(); // Access setUser from AuthContext
+
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // handle login logic here
-    console.log({ phone, role, password });
+    setError('');
+    setSuccess('');
+
+    if (role === 'nurse') {
+      try {
+        console.log('📡 Sending login request:', { phone, password });
+
+        const response = await axios.post('http://localhost:5000/api/nurse/login', {
+          phone,
+          password,
+        }, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        console.log('✅ Login response:', response.data);
+        setSuccess(`Welcome ${response.data?.nurse?.nurseName || 'Nurse'}!`);
+
+        // Save nurse info to localStorage (optional)
+        localStorage.setItem('nurse', JSON.stringify(response.data.nurse));
+
+        // Update the context with the logged-in user
+        setUser(response.data.nurse); 
+
+        // Redirect to the regnewborn page
+        navigate('/regnewborn');
+      } catch (err) {
+        console.error('❌ Login error:', err.response?.data || err.message);
+        setError(err.response?.data?.message || 'Login failed');
+      }
+    } else {
+      setError('Only nurse login is implemented for now.');
+    }
   };
 
   return (
@@ -30,18 +70,6 @@ const LoginPage = () => {
           </div>
 
           <div>
-            <label className="block text-black mb-1">Role</label>
-            <select
-              value={role}
-              onChange={(e) => setRole(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-lg"
-            >
-              <option value="parent">Parent</option>
-              <option value="nurse">Nurse / Doctor</option>
-            </select>
-          </div>
-
-          <div>
             <label className="block text-black mb-1">Password</label>
             <input
               type="password"
@@ -58,6 +86,9 @@ const LoginPage = () => {
           >
             Login
           </button>
+
+          {error && <p className="text-red-600 text-sm mt-2">{error}</p>}
+          {success && <p className="text-green-600 text-sm mt-2">{success}</p>}
         </form>
       </div>
     </div>

@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
-// Schema defines the structure of the document in MongoDB
-const Parent = new mongoose.Schema({
+// User Schema defines the structure of the document in MongoDB
+const UserSchema = new mongoose.Schema({
   fullName: { type: String, required: true },
   password: { type: String, required: true },
   phone: { type: Number }, // optional
 });
 
-module.exports = mongoose.model('Parent', Parent);
+module.exports = mongoose.model('User', UserSchema);

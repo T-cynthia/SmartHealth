@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { getAllNewborns } = require('../controllers/newbornController');
+const newbornController = require('../controllers/newbornController');
 
-router.get('/', getAllNewborns);
+router.post('/register', newbornController.registerNewborn);
+router.get('/', newbornController.getAllNewborns);
 
 module.exports = router;
