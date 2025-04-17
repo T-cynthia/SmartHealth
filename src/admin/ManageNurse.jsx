@@ -39,8 +39,9 @@ const ManageNurses = () => {
 
       <form onSubmit={handleSubmit} className="mb-6 grid grid-cols-1 md:grid-cols-3 gap-4">
         <input name="name" placeholder="Name" value={form.name} onChange={handleChange} className="border p-2 rounded" />
-        <input name="email" placeholder="Email" value={form.email} onChange={handleChange} className="border p-2 rounded" />
-        <input name="phone" placeholder="Phone" value={form.phone} onChange={handleChange} className="border p-2 rounded" />
+        <input name="phone" placeholder="phone" value={form.phone} onChange={handleChange} className="border p-2 rounded" />
+        <input name="password" placeholder="Password" value={form.password} onChange={handleChange} className="border p-2 rounded" />
+        <input name="address" placeholder="Address" value={form.address} onChange={handleChange} className="border p-2 rounded" />
         <button type="submit" className="col-span-1 md:col-span-3 bg-blue-700 text-white py-2 rounded">
           Add Nurse
         </button>
@@ -50,8 +51,9 @@ const ManageNurses = () => {
         <thead>
           <tr className="bg-gray-200">
             <th className="p-2 border">Name</th>
-            <th className="p-2 border">Email</th>
             <th className="p-2 border">Phone</th>
+            <th className="p-2 border">Password</th>
+            <th className="p-2 border">Address</th>
             <th className="p-2 border">Registered At</th>
           </tr>
         </thead>
