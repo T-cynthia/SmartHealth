@@ -1,6 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const ManageNewborns = () => {
+  const [newborns, setNewborns] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:5000/api/newborns')
+      .then(res => setNewborns(res.data))
+      .catch(err => console.error('Error fetching newborns:', err));
+  }, []);
+
   return (
     <div>
       <h1 className="text-2xl font-bold mb-6 text-blue-700">Manage Newborns</h1>
@@ -14,15 +23,16 @@ const ManageNewborns = () => {
           </tr>
         </thead>
         <tbody>
-          {/* Example row */}
-          <tr>
-            <td className="border px-4 py-2">Baby Cynthia</td>
-            <td className="border px-4 py-2">2025-01-20</td>
-            <td className="border px-4 py-2">Ben Mugabo</td>
-            <td className="border px-4 py-2">
-              <button className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Delete</button>
-            </td>
-          </tr>
+          {newborns.map((baby) => (
+            <tr key={baby._id}>
+              <td className="border px-4 py-2">{baby.name}</td>
+              <td className="border px-4 py-2">{baby.dob}</td>
+              <td className="border px-4 py-2">{baby.parent}</td>
+              <td className="border px-4 py-2">
+                <button className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Delete</button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
