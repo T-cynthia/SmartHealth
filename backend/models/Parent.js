@@ -21,6 +21,7 @@ const ParentSchema = new mongoose.Schema({
 }
 });
 
+
 // Export the model to use in other files
 module.exports = mongoose.model('Parent', ParentSchema);
 
