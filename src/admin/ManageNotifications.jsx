@@ -1,19 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 
 const ManageNotifications = () => {
+  const [form, setForm] = useState({ message: '', nurseEmail: '' });
+
+  const handleChange = e => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSend = async e => {
+    e.preventDefault();
+    try {
+      await axios.post('/api/notifications', form);
+      alert('Notification sent!');
+    } catch (err) {
+      console.error(err);
+      alert('Error sending notification.');
+    }
+  };
+
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-6 text-blue-700">Manage Notifications</h1>
-      <form className="bg-white p-6 rounded-lg shadow-md space-y-4">
-        <div>
-          <label className="block font-medium text-gray-700">Notification Title</label>
-          <input type="text" className="w-full border px-4 py-2 rounded" placeholder="E.g. Upcoming vaccine" />
-        </div>
-        <div>
-          <label className="block font-medium text-gray-700">Message</label>
-          <textarea className="w-full border px-4 py-2 rounded" rows="4" placeholder="Enter notification message..."></textarea>
-        </div>
-        <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Send Notification</button>
+      <h2 className="text-2xl font-bold mb-4">Send Notification to Nurse</h2>
+      <form onSubmit={handleSend} className="bg-white p-6 rounded shadow w-full max-w-md">
+        <input name="nurseEmail" placeholder="Nurse Email" onChange={handleChange} className="w-full mb-3 p-2 border rounded" />
+        <textarea name="message" placeholder="Your message" onChange={handleChange} className="w-full mb-3 p-2 border rounded" />
+        <button type="submit" className="bg-blue-700 text-white px-4 py-2 rounded">Send</button>
       </form>
     </div>
   );

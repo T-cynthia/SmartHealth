@@ -1,22 +1,42 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, useNavigate, Outlet } from 'react-router-dom';
 
 const AdminLayout = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('adminLoggedIn');
+    navigate('/admin/login');
+  };
+
   return (
-    <div className="flex min-h-screen">
-      <aside className="w-64 bg-blue-700 text-white p-6 space-y-4">
-        <h2 className="text-xl font-bold mb-6">Admin Panel</h2>
-        <nav className="flex flex-col space-y-3">
-          <Link to="/admin/dashboard" className="hover:text-blue-200">Dashboard</Link>
-          <Link to="/admin/users" className="hover:text-blue-200">Manage Users</Link>
-          <Link to="/admin/newborns" className="hover:text-blue-200">Newborns</Link>
-          <Link to="/admin/vaccinations" className="hover:text-blue-200">Vaccinations</Link>
-          <Link to="/admin/consultations" className="hover:text-blue-200">Consultations</Link>
-          <Link to="/admin/notifications" className="hover:text-blue-200">Notifications</Link>
-        </nav>
+    <div className="flex min-h-screen bg-gray-100">
+      <aside className="w-64 bg-blue-900 text-white p-6 flex flex-col justify-between">
+        {/* Top part: title + links */}
+        <div>
+          <h1 className="text-2xl font-bold mb-8">Admin Panel</h1>
+          <nav className="space-y-4">
+            <Link to="/admin/dashboard" className="block hover:text-yellow-400">Dashboard</Link>
+            <Link to="/admin/users" className="block hover:text-yellow-400">Manage Users</Link>
+            <Link to="/admin/nurses" className="block hover:text-yellow-400">Manage Nurses</Link>
+            <Link to="/admin/newborns" className="block hover:text-yellow-400">Manage Newborns</Link>
+            <Link to="/admin/notifications" className="block hover:text-yellow-400">Notifications</Link>
+          </nav>
+        </div>
+
+        {/* Bottom part: logout */}
+        <div className="mt-8 mb-6">
+          <button
+            onClick={handleLogout}
+            className="w-full bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md transition duration-300"
+          >
+            Logout
+          </button>
+        </div>
       </aside>
 
-      <main className="flex-1 p-6 bg-gray-100">
+      {/* Right content */}
+      <main className="flex-1 p-6">
         <Outlet />
       </main>
     </div>

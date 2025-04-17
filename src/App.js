@@ -17,13 +17,14 @@ import LoginPage from './component/LoginPage';
 import SignupPage from './component/SignupPage';
 
 // Admin
-import AdminLayout from './admin/AdminLayout';
+import AdminLogin from './admin/AdminLogin';
 import Dashboard from './admin/Dashboard';
-import Users from './admin/ManageUsers';
-import Newborns from './admin/ManageNewborns';
-import Vaccinations from './admin/ManageVaccinations';
-import Consultations from './admin/ManageConsultations';
-import Notifications from './admin/ManageNotifications';
+import ManageUsers from './admin/ManageUsers';
+import ManageNurses from './admin/ManageNurse';
+import ManageNewborns from './admin/ManageNewborns';
+import ManageNotifications from './admin/ManageNotifications';
+import AdminLayout from './admin/AdminLayout';
+import ProtectedRoute from './admin/ProtectedRoute';
 
 import './component/global.css';
 
@@ -33,14 +34,14 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          {/* Public */}
+          {/* Public Routes */}
           <Route path="/" element={<Homepage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/contact" element={<ContactPage />} />
 
-          {/* Protected */}
+          {/* Protected Routes */}
           <Route path="/consultation" element={<PrivateRoute element={<ConsultationPage />} />} />
           <Route path="/regnewborn" element={<PrivateRoute element={<RegisterNewborn />} />} />
           <Route path="/vaccination" element={<PrivateRoute element={<VaccineTracker />} />} />
@@ -49,14 +50,16 @@ function App() {
           <Route path="/payment/cancel" element={<PrivateRoute element={<PaymentFailure />} />} />
           <Route path="/health-tips" element={<PrivateRoute element={<HealthTipsPage />} />} />
 
-          {/* Admin with nested routes */}
-          <Route path="/admin" element={<PrivateRoute element={<AdminLayout />} />}>
+          {/* Admin Routes */}
+          <Route path="/admin/login" element={<AdminLogin />} />
+
+          {/* Protected Admin Routes */}
+          <Route path="/admin" element={<ProtectedRoute><AdminLayout /></ProtectedRoute>}>
             <Route path="dashboard" element={<Dashboard />} />
-            <Route path="users" element={<Users />} />
-            <Route path="newborns" element={<Newborns />} />
-            <Route path="vaccinations" element={<Vaccinations />} />
-            <Route path="consultations" element={<Consultations />} />
-            <Route path="notifications" element={<Notifications />} />
+            <Route path="users" element={<ManageUsers />} />
+            <Route path="nurses" element={<ManageNurses />} />
+            <Route path="newborns" element={<ManageNewborns />} />
+            <Route path="notifications" element={<ManageNotifications />} />
           </Route>
         </Routes>
       </Router>
