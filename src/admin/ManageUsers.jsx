@@ -1,28 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const ManageUsers = () => {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    axios.get('/api/users') // adjust URL as needed
+      .then(res => setUsers(res.data))
+      .catch(err => console.error(err));
+  }, []);
+
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-6 text-blue-700">Manage Users</h1>
-      <table className="w-full table-auto border border-gray-300 bg-white shadow-md rounded-lg">
-        <thead>
-          <tr className="bg-blue-600 text-white">
-            <th className="px-4 py-2">Name</th>
-            <th className="px-4 py-2">Email</th>
-            <th className="px-4 py-2">Role</th>
-            <th className="px-4 py-2">Actions</th>
+      <h2 className="text-2xl font-bold mb-4">Parents List</h2>
+      <table className="w-full bg-white border rounded shadow">
+        <thead className="bg-blue-600 text-white">
+          <tr>
+            <th className="p-3">Full Name</th>
+            <th className="p-3">Email</th>
+            <th className="p-3">Registered At</th>
           </tr>
         </thead>
         <tbody>
-          {/* Example row */}
-          <tr>
-            <td className="border px-4 py-2">Jane Doe</td>
-            <td className="border px-4 py-2">jane@example.com</td>
-            <td className="border px-4 py-2">Parent</td>
-            <td className="border px-4 py-2">
-              <button className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Delete</button>
-            </td>
-          </tr>
+          {users.map((u, i) => (
+            <tr key={i} className="text-center border-t">
+              <td className="p-3">{u.fullName}</td>
+              <td className="p-3">{u.email}</td>
+              <td className="p-3">{new Date(u.createdAt).toLocaleDateString()}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

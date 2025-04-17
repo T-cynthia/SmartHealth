@@ -1,3 +1,6 @@
+// server.js
+import adminRoutes from './routes/adminRoutes.js';
+import nurseRoutes from './routes/nurseRoutes.js';
 require('dotenv').config();
 const app = require('./app');
 const connectToMongo = require('./config/db');
@@ -9,7 +12,7 @@ const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: 'sayinzogae@gmail.com',
-    pass: 'fqib qxxq mory ewxa'
+    pass: 'fqib qxxq mory ewxa' // ⚠️ Don't commit this in real apps!
   }
 });
 
