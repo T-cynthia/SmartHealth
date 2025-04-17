@@ -5,9 +5,7 @@ import Footer from './Footer';
 const Homepage = () => {
   return (
     <div className="flex flex-col min-h-screen bg-blue-50">
-      {/* Main Content */}
       <main className="flex-grow">
-        {/* Hero Section */}
         <section
           className="text-center py-16 px-4 md:px-20 bg-cover bg-center"
           style={{
@@ -23,23 +21,18 @@ const Homepage = () => {
           </p>
           <div className="mt-8 flex justify-center gap-4">
             <Link
-              to="/register"
-              className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
+              to="/signup"
+              className="bg-blue-200 px-4 py-1.5 rounded text-sm font-medium hover:bg-blue-400 transition"
             >
-              Register Newborn
+              Sign Up
             </Link>
             <Link
-              to="/vaccination"
-              className="bg-teal-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-teal-700 transition"
+              to="/login"
+              className="bg-blue-200 px-4 py-1.5 rounded text-sm font-medium hover:bg-blue-400 transition"
             >
-              Track Vaccinations
+              Login
             </Link>
-            <Link
-              to="/consultation"
-              className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
-            >
-              Book Consultation
-            </Link>
+
           </div>
         </section>
 
@@ -54,12 +47,12 @@ const Homepage = () => {
               <h3 className="text-xl font-bold text-blue-700 mb-2">Vaccine Tracker</h3>
               <p className="text-gray-600">Get timely reminders for your child’s vaccinations.</p>
             </div>
-            <div className="bg-teal-100 p-6 rounded-xl shadow-md hover:shadow-lg transition">
-              <h3 className="text-xl font-bold text-teal-700 mb-2">Consult Experts</h3>
+            <div className="bg-blue-100 p-6 rounded-xl shadow-md hover:shadow-lg transition">
+              <h3 className="text-xl font-bold text-blue-700 mb-2">Consult Experts</h3>
               <p className="text-gray-600">Book appointments with qualified doctors easily.</p>
             </div>
             <div className="bg-indigo-100 p-6 rounded-xl shadow-md hover:shadow-lg transition">
-              <h3 className="text-xl font-bold text-indigo-700 mb-2">Smart Notifications</h3>
+              <h3 className="text-xl font-bold text-blue-700 mb-2">Smart Notifications</h3>
               <p className="text-gray-600">Receive helpful health tips and schedule alerts.</p>
             </div>
           </div>
@@ -67,18 +60,17 @@ const Homepage = () => {
 
         {/* Call To Action Section */}
         <section className="text-center py-16 bg-blue-100">
-          <h2 className="text-3xl font-bold text-blue-700 mb-4">Ready to get started?</h2>
+          <h2 className="text-3xl font-bold mb-4">Ready to get started?</h2>
           <p className="text-gray-600 mb-6">Join thousands of parents using KiddoCare today.</p>
           <Link
             to="/register"
-            className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
+            className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
           >
             Register Now
           </Link>
         </section>
       </main>
 
-      {/* Footer */}
       <Footer />
     </div>
   );

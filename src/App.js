@@ -4,7 +4,6 @@ import { AuthProvider } from './AuthContext';
 import PrivateRoute from './PrivateRoute';
 import Navbar from './component/Navbar';
 import Homepage from './component/Homepage';
-import Register from './component/Regpage';
 import ConsultationPage from './component/Conspage';
 import RegisterNewborn from './component/RegNewborn';
 import Payment from './component/Payment';
@@ -36,7 +35,6 @@ function App() {
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<Homepage />} />
-          <Route path="/register" element={<Register />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/contact" element={<ContactPage />} />
