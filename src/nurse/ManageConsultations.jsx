@@ -10,6 +10,7 @@ const ManageConsultation = () => {
         id: 1,
         parentName: 'Sarah',
         babyName: 'Ava',
+        doctorName: 'Dr. Rosine',
         bookingDate: '2025-04-20',
         time: '10:00 AM',
         status: 'Pending',
@@ -18,6 +19,7 @@ const ManageConsultation = () => {
         id: 2,
         parentName: 'John',
         babyName: 'Liam',
+        doctorName: 'Dr. Smith',
         bookingDate: '2025-04-22',
         time: '02:00 PM',
         status: 'Pending',
@@ -42,7 +44,7 @@ const ManageConsultation = () => {
   };
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
+    <div className="p-6 bg-gray-100">
       <h1 className="text-3xl font-bold mb-6 text-center text-green-700">Manage Consultation Bookings</h1>
 
       <div className="overflow-x-auto bg-white shadow rounded-lg">
@@ -51,6 +53,7 @@ const ManageConsultation = () => {
             <tr>
               <th className="px-4 py-2 text-left">Parent Name</th>
               <th className="px-4 py-2 text-left">Baby Name</th>
+              <th className="px-4 py-2 text-left">Doctor</th>
               <th className="px-4 py-2 text-left">Booking Date</th>
               <th className="px-4 py-2 text-left">Time</th>
               <th className="px-4 py-2 text-left">Status</th>
@@ -62,6 +65,7 @@ const ManageConsultation = () => {
               <tr key={consultation.id} className="border-b hover:bg-gray-50">
                 <td className="px-4 py-4">{consultation.parentName}</td>
                 <td className="px-4 py-4">{consultation.babyName}</td>
+                <td className="px-4 py-4">{consultation.doctorName}</td>
                 <td className="px-4 py-4">{consultation.bookingDate}</td>
                 <td className="px-4 py-4">{consultation.time}</td>
                 <td className="px-4 py-4">{consultation.status}</td>

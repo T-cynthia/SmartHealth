@@ -37,8 +37,8 @@ const HealthTipsPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white py-10 px-6">
-      <h1 className="text-3xl font-bold text-center text-blue-700 mb-8">Mother & Baby Health Tips</h1>
+    <div className=" bg-white py-10 px-6">
+      <h1 className="text-3xl font-bold text-center mb-8">Mother & Baby Health Tips</h1>
       
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {tips.map((tip, index) => (

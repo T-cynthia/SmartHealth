@@ -35,7 +35,7 @@ const ManageVaccinations = () => {
   };
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
+    <div className="p-6 bg-gray-100">
       <h1 className="text-3xl font-bold mb-6 text-center text-green-700">Vaccination Management</h1>
 
       <div className="overflow-x-auto bg-white shadow rounded-lg">

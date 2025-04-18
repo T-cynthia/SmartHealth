@@ -33,6 +33,7 @@ const Navbar = () => {
               <Link to="/admin/login" onClick={closeMenu} className="block px-4 py-2 text-gray-800 hover:bg-blue-100"> Admin Login </Link>
               <Link to="/nurse/login" onClick={closeMenu} className="block px-4 py-2 text-gray-800 hover:bg-blue-100"> Nurse Login </Link>
               <Link to="/parent/login" onClick={closeMenu} className="block px-4 py-2 text-gray-800 hover:bg-blue-100"> Parent Login </Link>
+
             </div>
           )}
         </div>

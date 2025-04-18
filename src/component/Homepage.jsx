@@ -51,10 +51,10 @@ const Homepage = () => {
           <h2 className="text-3xl font-bold mb-4">Ready to get started?</h2>
           <p className="text-gray-600 mb-6">Join thousands of parents using KiddoCare today.</p>
           <Link
-            to="/register"
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
+            to="/contact"
+            className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
           >
-            Register Now
+            Contact Us
           </Link>
         </section>
       </main>
