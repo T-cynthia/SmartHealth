@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './AuthContext';
 import PrivateRoute from './PrivateRoute';
 import Navbar from './component/Navbar';
@@ -24,6 +24,10 @@ import ManageNewborns from './admin/ManageNewborns';
 import ManageNotifications from './admin/ManageNotifications';
 import AdminLayout from './admin/AdminLayout';
 import ProtectedRoute from './admin/ProtectedRoute';
+
+// Parent
+import ParentDashboard from './parent/ParentDashboard';
+import ParentLogin from './parent/ParentLogin';
 
 import './component/global.css';
 
@@ -59,6 +63,11 @@ function App() {
             <Route path="newborns" element={<ManageNewborns />} />
             <Route path="notifications" element={<ManageNotifications />} />
           </Route>
+
+          {/* Parent Routes */}
+          <Route path="/login/parent" element={<ParentLogin />} />
+          <Route path="/parent/dashboard" element={<ParentDashboard />} />
+          
         </Routes>
       </Router>
     </AuthProvider>
