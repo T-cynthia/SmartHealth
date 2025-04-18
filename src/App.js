@@ -5,7 +5,6 @@ import PrivateRoute from './PrivateRoute';
 import Navbar from './component/Navbar';
 import Homepage from './component/Homepage';
 import ConsultationPage from './component/Conspage';
-import RegisterNewborn from './component/RegNewborn';
 import Payment from './component/Payment';
 import PaymentSuccess from './component/PaymentSuccess';
 import PaymentFailure from './component/PaymentFailure';
@@ -25,6 +24,16 @@ import ManageNotifications from './admin/ManageNotifications';
 import AdminLayout from './admin/AdminLayout';
 import ProtectedRoute from './admin/ProtectedRoute';
 
+// Nurse
+import NurseLogin from './nurse/NurseLogin';
+import NurseRoute from './nurse/NurseRoute';
+import NurseDashboard from './nurse/NurseDashboard';
+import NurseLayout from './nurse/NurseLayout';
+import Registrationform from './nurse/Regpage';
+import NurseNotifications from './nurse/NurseNotifications';
+import Vaccinations from './nurse/ManageVaccinations';
+import Consultations from './nurse/ManageConsultations';
+
 import './component/global.css';
 
 function App() {
@@ -41,7 +50,6 @@ function App() {
 
           {/* Protected Routes */}
           <Route path="/consultation" element={<PrivateRoute element={<ConsultationPage />} />} />
-          <Route path="/regnewborn" element={<PrivateRoute element={<RegisterNewborn />} />} />
           <Route path="/vaccination" element={<PrivateRoute element={<VaccineTracker />} />} />
           <Route path="/payment" element={<PrivateRoute element={<Payment />} />} />
           <Route path="/payment/success" element={<PrivateRoute element={<PaymentSuccess />} />} />
@@ -59,6 +67,21 @@ function App() {
             <Route path="newborns" element={<ManageNewborns />} />
             <Route path="notifications" element={<ManageNotifications />} />
           </Route>
+
+
+          {/* Nurse Routes */}
+          <Route path="/nurse/login" element={<NurseLogin />} />
+
+          {/* Protected Nurse Routes */}
+          <Route path="/nurse" element={<NurseRoute><NurseLayout /></NurseRoute>}>
+            <Route path="dashboard" element={<NurseDashboard />} />
+            <Route path="notifications" element={<NurseNotifications />} />
+            <Route path="register" element={<Registrationform />} />
+            <Route path="newborns" element={<Vaccinations />} />
+            <Route path="consultation" element={<Consultations />} />
+          </Route>
+
+
         </Routes>
       </Router>
     </AuthProvider>

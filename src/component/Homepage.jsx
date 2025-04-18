@@ -20,18 +20,6 @@ const Homepage = () => {
             Helping you track vaccinations, book consultations, and ensure your newborn's health with ease and care.
           </p>
           <div className="mt-8 flex justify-center gap-4">
-            <Link
-              to="/signup"
-              className="bg-blue-200 px-4 py-1.5 rounded text-sm font-medium hover:bg-blue-400 transition"
-            >
-              Sign Up
-            </Link>
-            <Link
-              to="/login"
-              className="bg-blue-200 px-4 py-1.5 rounded text-sm font-medium hover:bg-blue-400 transition"
-            >
-              Login
-            </Link>
 
           </div>
         </section>
