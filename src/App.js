@@ -1,10 +1,6 @@
 import React from 'react';
-<<<<<<< HEAD
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-=======
 import './App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
->>>>>>> 350829b9f8f3e3228af765f468d5271c341e9a74
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './AuthContext';
 import PrivateRoute from './PrivateRoute';
 import Navbar from './component/Navbar';

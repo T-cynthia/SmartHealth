@@ -4,15 +4,14 @@ import { useNavigate } from 'react-router-dom';
 const ParentLogin = () => {
   const [fullName, setFullName] = useState('');
   const [phone, setPhone] = useState('');
-  const [password, setPassword] = useState('');
   const navigate = useNavigate();  // Hook to navigate after login
 
   const handleLogin = (e) => {
     e.preventDefault();
 
     // Simple validation (you can add more sophisticated logic here)
-    if (phone && password) {
-      console.log({ fullName, phone, password });
+    if (fullName && phone) {
+      console.log({ fullName, phone });
       // Redirect to the parent dashboard after successful login
       navigate('/parent/dashboard');
     } else {
@@ -51,17 +50,7 @@ const ParentLogin = () => {
             />
           </div>
 
-          {/* Password Field */}
-          <div>
-            <label className="block text-black mb-1">Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-lg"
-              required
-            />
-          </div>
+         
 
           {/* Submit Button */}
           <button
