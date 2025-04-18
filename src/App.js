@@ -1,5 +1,10 @@
 import React from 'react';
+<<<<<<< HEAD
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+=======
+import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+>>>>>>> 350829b9f8f3e3228af765f468d5271c341e9a74
 import { AuthProvider } from './AuthContext';
 import PrivateRoute from './PrivateRoute';
 import Navbar from './component/Navbar';
@@ -14,6 +19,7 @@ import HealthTipsPage from './component/HealthTipsPage';
 import ContactPage from './component/ContactPage';
 import LoginPage from './component/LoginPage';
 import SignupPage from './component/SignupPage';
+import Regpage from './component/Regpage';
 
 // Admin
 import AdminLogin from './admin/AdminLogin';
@@ -44,6 +50,7 @@ function App() {
           <Route path="/contact" element={<ContactPage />} />
 
           {/* Protected Routes */}
+          <Route path="/regpage" element={<PrivateRoute element={<Regpage />} />} />
           <Route path="/consultation" element={<PrivateRoute element={<ConsultationPage />} />} />
           <Route path="/regnewborn" element={<PrivateRoute element={<RegisterNewborn />} />} />
           <Route path="/vaccination" element={<PrivateRoute element={<VaccineTracker />} />} />

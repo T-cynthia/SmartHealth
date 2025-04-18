@@ -1,23 +1,34 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Example admin credentials (change to a more secure method, such as a backend API)
-    const adminEmail = 'admin@example.com';
-    const adminPassword = 'admin123';
+    setError('');
 
-    if (email === adminEmail && password === adminPassword) {
-      // Set admin logged in status in localStorage or context
-      localStorage.setItem('adminLoggedIn', 'true');
-      navigate('/admin/dashboard'); // Redirect to admin dashboard
-    } else {
-      alert('Invalid credentials');
+    try {
+      const response = await axios.post('http://localhost:5000/api/admin/login', {
+        email,
+        password,
+      });
+
+      if (response.data && response.data.admin) {
+        // Save admin login state (you could use context or localStorage)
+        localStorage.setItem('adminLoggedIn', 'true');
+        localStorage.setItem('admin', JSON.stringify(response.data.admin));
+        navigate('/admin/dashboard');
+      } else {
+        setError('Login failed');
+      }
+    } catch (err) {
+      console.error('Login Error:', err.response?.data || err.message);
+      setError(err.response?.data?.message || 'Login failed');
     }
   };
 
@@ -48,6 +59,7 @@ const AdminLogin = () => {
               required
             />
           </div>
+          {error && <p className="text-red-600 text-sm mb-4">{error}</p>}
           <button
             type="submit"
             className="w-full py-3 bg-blue-600 text-white text-lg font-semibold rounded-md hover:bg-blue-700 transition duration-300"

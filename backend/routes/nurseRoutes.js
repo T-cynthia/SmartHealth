@@ -1,27 +1,11 @@
-import express from 'express';
-import Nurse from '../models/Nurse.js';
-
+const express = require('express');
 const router = express.Router();
+const nurseController = require('../controllers/nurseController');
 
-// Add new nurse
-router.post('/', async (req, res) => {
-  try {
-    const nurse = new Nurse(req.body);
-    await nurse.save();
-    res.status(201).json(nurse);
-  } catch (err) {
-    res.status(500).json({ error: 'Failed to add nurse' });
-  }
-});
+router.post('/register', nurseController.register);
+router.post('/login', nurseController.login);
+router.get('/all', nurseController.getAllNurses);
+router.put('/:id/edit', nurseController.editNurse);        // PUT  /api/nurse/:id/edit (Edit nurse)
+router.delete('/:id', nurseController.deleteNurse); 
 
-// Get all nurses
-router.get('/', async (req, res) => {
-  try {
-    const nurses = await Nurse.find();
-    res.json(nurses);
-  } catch (err) {
-    res.status(500).json({ error: 'Failed to fetch nurses' });
-  }
-});
-
-export default router;
+module.exports = router;

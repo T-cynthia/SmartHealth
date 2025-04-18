@@ -1,10 +1,10 @@
-import mongoose from 'mongoose';
+const mongoose = require ('mongoose');
 
-const nurseSchema = new mongoose.Schema({
-  name: String,
-  email: { type: String, unique: true },
-  phone: String,
-  createdAt: { type: Date, default: Date.now },
+const Nurse = new mongoose.Schema({
+    nurseName : {type: String, required: true},
+    phone:{type:Number , required:true},
+    address:{type: String, required: true},
+    password : {type: String, required: true}
 });
 
-export default mongoose.model('Nurse', nurseSchema);
+module.exports = mongoose.model('Nurse', Nurse);
