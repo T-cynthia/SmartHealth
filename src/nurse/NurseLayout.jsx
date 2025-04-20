@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link, useNavigate, Outlet } from 'react-router-dom';
 
-const AdminLayout = () => {
+const NurseLayout = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem('adminLoggedIn');
+    localStorage.removeItem('nurseLoggedIn');
     navigate('/');
   };
 
@@ -13,15 +13,14 @@ const AdminLayout = () => {
     <div className="bg-gray-100 flex">
       {/* Fixed Sidebar */}
       <aside className="fixed top-0 left-0 h-full w-64 bg-blue-900 text-white p-6 flex flex-col justify-between">
-        {/* Top part: title + links */}
         <div>
-          <h1 className="text-2xl font-bold mt-20">Admin Panel</h1>
+          <h1 className="text-2xl font-bold mt-20">Nurse Panel</h1>
           <nav className="space-y-4">
-            <Link to="/admin/dashboard" className="block hover:text-yellow-400 mt-10">Dashboard</Link>
-            <Link to="/admin/nurses" className="block hover:text-yellow-400">Manage Nurses</Link>
-            <Link to="/admin/parents" className="block hover:text-yellow-400">Manage Parents</Link>
-            <Link to="/admin/newborns" className="block hover:text-yellow-400">Manage Newborns</Link>
-            <Link to="/admin/notifications" className="block hover:text-yellow-400">Notifications</Link>
+            <Link to="/nurse/dashboard" className="block hover:text-yellow-400 mt-10">Dashboard</Link>
+            <Link to="/nurse/register" className="block hover:text-yellow-400">Register Newborns</Link>
+            <Link to="/nurse/vaccinations" className="block hover:text-yellow-400">Manage Vaccination</Link>
+            <Link to="/nurse/consultations" className="block hover:text-yellow-400">Manage Consultation</Link>
+            <Link to="/nurse/notifications" className="block hover:text-yellow-400">Notifications</Link>
           </nav>
         </div>
 
@@ -44,4 +43,4 @@ const AdminLayout = () => {
   );
 };
 
-export default AdminLayout;
+export default NurseLayout;

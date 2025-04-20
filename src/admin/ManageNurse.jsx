@@ -74,38 +74,11 @@ const ManageNurse = () => {
 
       {/* Nurse Registration / Edit Form */}
       <form onSubmit={handleSubmit} className="mb-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-        <input
-          name="nurseName"
-          placeholder="Name"
-          value={form.nurseName}
-          onChange={handleChange}
-          className="border p-2 rounded"
-        />
-        <input
-          name="phone"
-          placeholder="Phone"
-          value={form.phone}
-          onChange={handleChange}
-          className="border p-2 rounded"
-        />
-        <input
-          name="password"
-          placeholder="Password"
-          value={form.password}
-          onChange={handleChange}
-          className="border p-2 rounded"
-        />
-        <input
-          name="address"
-          placeholder="Address"
-          value={form.address}
-          onChange={handleChange}
-          className="border p-2 rounded"
-        />
-        <button
-          type="submit"
-          className="col-span-1 md:col-span-3 bg-blue-700 text-white py-2 rounded"
-        >
+        <input name="nurseName" placeholder="Name" value={form.nurseName} onChange={handleChange} className="border p-2 rounded" />
+        <input name="phone" placeholder="Phone" value={form.phone} onChange={handleChange} className="border p-2 rounded" /> <br></br>
+        <input name="password" placeholder="Password" value={form.password} onChange={handleChange} className="border p-2 rounded" />
+        <input name="address" placeholder="Address (District - Sector - Cell)" value={form.address} onChange={handleChange} className="border p-2 rounded" />
+        <button type="submit" className="col-span-1 md:col-span-3 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded" >
           {editMode ? 'Update Nurse' : 'Add Nurse'}
         </button>
       </form>

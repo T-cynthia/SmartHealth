@@ -1,31 +1,41 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './AuthContext';
-import PrivateRoute from './PrivateRoute';
 import Navbar from './component/Navbar';
 import Homepage from './component/Homepage';
-import ConsultationPage from './component/Conspage';
-import RegisterNewborn from './component/RegNewborn';
-import Payment from './component/Payment';
-import PaymentSuccess from './component/PaymentSuccess';
-import PaymentFailure from './component/PaymentFailure';
-import VaccineTracker from './component/VaccineTracker';
-import HealthTipsPage from './component/HealthTipsPage';
 import ContactPage from './component/ContactPage';
-import LoginPage from './component/LoginPage';
-import SignupPage from './component/SignupPage';
-import Regpage from './component/Regpage';
 
 // Admin
 import AdminLogin from './admin/AdminLogin';
-import Dashboard from './admin/Dashboard';
-import ManageUsers from './admin/ManageUsers';
+import AdminDashboard from './admin/AdminDashboard';
+import ManageParents from './admin/ManageParents';
 import ManageNurses from './admin/ManageNurse';
 import ManageNewborns from './admin/ManageNewborns';
 import ManageNotifications from './admin/ManageNotifications';
 import AdminLayout from './admin/AdminLayout';
 import ProtectedRoute from './admin/ProtectedRoute';
+
+// Nurse
+import NurseLogin from './nurse/NurseLogin';
+import NurseRoute from './nurse/NurseRoute';
+import NurseDashboard from './nurse/NurseDashboard';
+import NurseLayout from './nurse/NurseLayout';
+import Registrationform from './nurse/Regpage';
+import NurseNotifications from './nurse/NurseNotifications';
+import Vaccinations from './nurse/ManageVaccinations';
+import Consultations from './nurse/ManageConsultations';
+
+// Parent
+import ParentDashboard from './parent/ParentDashboard';
+import ParentLogin from './parent/ParentLogin';
+import ParentLayout from './parent/ParentLayout';
+import ParentRoute from './parent/ParentRoute';
+import BookConsultation from './parent/BookConsultation';
+import HealthyTips from './parent/HealthyTips';
+import Certificate from './parent/Certificate';
+import ParentNotification from './parent/ParentNotification';
+
 
 import './component/global.css';
 
@@ -37,30 +47,42 @@ function App() {
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<Homepage />} />
-          <Route path="/login" element={<LoginPage />} />  
-          <Route path="/signup" element={<SignupPage />} />
           <Route path="/contact" element={<ContactPage />} />
-
-          {/* Protected Routes */}
-          <Route path="/regpage" element={<PrivateRoute element={<Regpage />} />} />
-          <Route path="/consultation" element={<PrivateRoute element={<ConsultationPage />} />} />
-          <Route path="/regnewborn" element={<PrivateRoute element={<RegisterNewborn />} />} />
-          <Route path="/vaccination" element={<PrivateRoute element={<VaccineTracker />} />} />
-          <Route path="/payment" element={<PrivateRoute element={<Payment />} />} />
-          <Route path="/payment/success" element={<PrivateRoute element={<PaymentSuccess />} />} />
-          <Route path="/payment/cancel" element={<PrivateRoute element={<PaymentFailure />} />} />
-          <Route path="/health-tips" element={<PrivateRoute element={<HealthTipsPage />} />} />
 
           {/* Admin Routes */}
           <Route path="/admin/login" element={<AdminLogin />} />
 
           {/* Protected Admin Routes */}
           <Route path="/admin" element={<ProtectedRoute><AdminLayout /></ProtectedRoute>}>
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="users" element={<ManageUsers />} />
+            <Route path="dashboard" element={<AdminDashboard />} />
+            <Route path="parents" element={<ManageParents />} />
             <Route path="nurses" element={<ManageNurses />} />
             <Route path="newborns" element={<ManageNewborns />} />
             <Route path="notifications" element={<ManageNotifications />} />
+          </Route>
+
+          {/* Nurse Routes */}
+          <Route path="/nurse/login" element={<NurseLogin />} />
+
+          {/* Protected Nurse Routes */}
+          <Route path="/nurse" element={<NurseRoute><NurseLayout /></NurseRoute>}>
+            <Route path="dashboard" element={<NurseDashboard />} />
+            <Route path="notifications" element={<NurseNotifications />} />
+            <Route path="register" element={<Registrationform />} />
+            <Route path="vaccinations" element={<Vaccinations />} />
+            <Route path="consultations" element={<Consultations />} />
+          </Route>
+
+
+
+          {/* Parent Routes */}
+          <Route path="/parent/login" element={<ParentLogin />} />
+          <Route path="/parent" element={<ParentRoute> <ParentLayout /> </ParentRoute>}>
+            <Route path="dashboard" element={<ParentDashboard />} />
+            <Route path="book-consultation" element={<BookConsultation />} />
+            <Route path="healthy-tips" element={<HealthyTips />} />
+            <Route path="certificate" element={<Certificate />} />
+            <Route path="notifications" element={<ParentNotification />} />
           </Route>
         </Routes>
       </Router>

@@ -30,20 +30,10 @@ const Navbar = () => {
 
           {showLoginMenu && (
             <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-md z-50">
-              <Link
-                to="/login"
-                onClick={closeMenu}
-                className="block px-4 py-2 text-gray-800 hover:bg-blue-100"
-              >
-                Parent/Nurse Login
-              </Link>
-              <Link
-                to="/admin/login"
-                onClick={closeMenu}
-                className="block px-4 py-2 text-gray-800 hover:bg-blue-100"
-              >
-                Admin Login
-              </Link>
+              <Link to="/admin/login" onClick={closeMenu} className="block px-4 py-2 text-gray-800 hover:bg-blue-100"> Admin Login </Link>
+              <Link to="/nurse/login" onClick={closeMenu} className="block px-4 py-2 text-gray-800 hover:bg-blue-100"> Nurse Login </Link>
+              <Link to="/parent/login" onClick={closeMenu} className="block px-4 py-2 text-gray-800 hover:bg-blue-100"> Parent Login </Link>
+
             </div>
           )}
         </div>

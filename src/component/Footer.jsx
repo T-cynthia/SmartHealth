@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="bg-blue-600 text-white py-10 px-6 mt-auto">
+    <footer className="bg-black-600 text-white py-10 px-6 mt-auto">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
         <div>
           <h3 className="text-2xl font-bold mb-2">KiddoCare</h3>
@@ -26,11 +26,11 @@ const Footer = () => {
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
               <img src="https://www.svgrepo.com/show/452196/facebook-1.svg" alt="Facebook" className="w-6 h-6" />
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://x.com/im_lydivine" target="_blank" rel="noopener noreferrer">
   <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" className="w-6 h-6" />
 </a>
 
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com/__i.ga.be_/" target="_blank" rel="noopener noreferrer">
               <img src="https://www.svgrepo.com/show/452229/instagram-1.svg" alt="Instagram" className="w-6 h-6" />
             </a>
           </div>

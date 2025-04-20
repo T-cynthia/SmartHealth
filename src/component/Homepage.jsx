@@ -20,18 +20,6 @@ const Homepage = () => {
             Helping you track vaccinations, book consultations, and ensure your newborn's health with ease and care.
           </p>
           <div className="mt-8 flex justify-center gap-4">
-            <Link
-              to="/signup"
-              className="bg-blue-200 px-4 py-1.5 rounded text-sm font-medium hover:bg-blue-400 transition"
-            >
-              Sign Up
-            </Link>
-            <Link
-              to="/login"
-              className="bg-blue-200 px-4 py-1.5 rounded text-sm font-medium hover:bg-blue-400 transition"
-            >
-              Login
-            </Link>
 
           </div>
         </section>
@@ -63,10 +51,10 @@ const Homepage = () => {
           <h2 className="text-3xl font-bold mb-4">Ready to get started?</h2>
           <p className="text-gray-600 mb-6">Join thousands of parents using KiddoCare today.</p>
           <Link
-            to="/register"
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
+            to="/contact"
+            className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
           >
-            Register Now
+            Contact Us
           </Link>
         </section>
       </main>
