@@ -1,22 +1,40 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const ParentLogin = () => {
   const [fullName, setFullName] = useState('');
   const [phone, setPhone] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-
-    // Check if credentials match the allowed parent
-    if (fullName === 'IGABE Lydivine' && phone === '0788931242') {
-      localStorage.setItem('parentLoggedIn', true);
-      navigate('/parent/dashboard');
-    } else {
-      alert('Invalid full name or phone number.');
+  
+    try {
+      const res = await axios.post('http://localhost:5000/api/newborns/parent', {
+        name: fullName,
+        phone,
+      });
+  
+      if (res.data.length > 0) {
+        // Save parent credentials
+        localStorage.setItem('parentLoggedIn', 'true');
+        localStorage.setItem('parent', JSON.stringify({
+          name: fullName,
+          phone,
+        }));
+  
+        // Redirect
+        navigate('/parent/dashboard');
+      } else {
+        alert('No baby found for this parent.');
+      }
+    } catch (err) {
+      console.error('Login error:', err);
+      alert('Something went wrong. Please try again.');
     }
   };
+  
 
   return (
     <div className="flex items-center justify-center mt-20 px-4">

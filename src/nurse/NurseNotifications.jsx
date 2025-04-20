@@ -1,20 +1,28 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const NurseNotifications = () => {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
-    // This would be replaced with real backend fetch
-    const fetchNotifications = async () => {
-      // Simulated example data
-      const mockData = [
-        { id: 1, message: "New baby registered at 2:00 PM" },
-        { id: 2, message: "Reminder: Submit today's records by 5:00 PM" },
-      ];
-      setNotifications(mockData);
+    const fetchTodayNewborns = async () => {
+      try {
+        const res = await axios.get('http://localhost:5000/api/newborns/today');
+        const newborns = res.data;
+
+        const formattedMessages = newborns.map((baby, index) => ({
+          id: index + 1,
+          message: `👶 ${baby.childName} was registered today to ${baby.motherName}.`
+        }));
+
+        setNotifications(formattedMessages);
+      } catch (err) {
+        console.error('Failed to fetch notifications:', err);
+        setNotifications([{ id: 0, message: "Error fetching today's newborns." }]);
+      }
     };
 
-    fetchNotifications();
+    fetchTodayNewborns();
   }, []);
 
   return (
@@ -32,7 +40,7 @@ const NurseNotifications = () => {
             </div>
           ))
         ) : (
-          <p className="text-gray-500">No new notifications.</p>
+          <p className="text-gray-500">No new notifications today.</p>
         )}
       </div>
     </div>
