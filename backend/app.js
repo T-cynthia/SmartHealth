@@ -6,7 +6,8 @@ const app = express();
 const adminRoutes = require('./routes/adminRoutes')
 const newbornRoutes = require('./routes/newbornRoutes')
 // const parentRoutes = require('./routes/parentRoutes');
-const userRoutes = require('./routes/userRoutes'); 
+const userRoutes = require('./routes/userRoutes'); // adjust path if needed
+
 
 app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 app.use(bodyParser.json());
