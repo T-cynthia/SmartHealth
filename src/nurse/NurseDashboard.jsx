@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../AuthContext';
 
 const NurseDashboard = () => {
+  const { user } = useAuth();
+
   return (
     <div className="p-6 bg-gray-50">
-      <h2 className="text-3xl font-bold mb-2">Welcome Nurse 👋</h2>
+      <h2 className="text-3xl font-bold mb-2">Welcome {user?.nurseName} 👋</h2>
       <p className="text-gray-600 mb-6">Here’s an overview of your daily activities and system shortcuts.</p>
 
       {/* Quick Stats */}
