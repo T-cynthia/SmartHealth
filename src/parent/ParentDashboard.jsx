@@ -3,9 +3,11 @@ import axios from 'axios';
 
 const ParentDashboard = () => {
   const [baby, setBaby] = useState(null);
+  const [parent, setParent] = useState(null);
 
   useEffect(() => {
     const storedParent = JSON.parse(localStorage.getItem('parent'));
+    setParent(storedParent);
 
     if (storedParent) {
       axios
@@ -35,7 +37,7 @@ const ParentDashboard = () => {
 
   return (
     <div>
-      <h2 className="text-3xl font-bold mb-6">Welcome Parent 👨‍👩‍👧</h2>
+      <h2 className="text-3xl font-bold mb-6">Welcome {parent?.name} 👨‍👩‍👧</h2>
       <p className="text-gray-600 mb-6">Here’s a quick overview of your child’s health schedule and activity.</p>
 
       {baby ? (
@@ -51,7 +53,7 @@ const ParentDashboard = () => {
             </div>
             <div className="bg-white shadow-md rounded-lg p-4">
               <h3 className="font-semibold text-blue-600 mb-2">Age</h3>
-              <p>{calculateAge(baby.dob)}nth</p>
+              <p>{calculateAge(baby.dob)}</p>
             </div>
           </div>
 
