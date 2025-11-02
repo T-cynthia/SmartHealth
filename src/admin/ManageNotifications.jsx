@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const ManageNotifications = () => {
-  const [form, setForm] = useState({ message: '', nurseName: '' });
+  const [form, setForm] = useState({ message: '' });
 
   const handleChange = e => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -11,8 +11,9 @@ const ManageNotifications = () => {
   const handleSend = async e => {
     e.preventDefault();
     try {
-      await axios.post('/api/notifications', form);
-      alert('Notification sent!');
+      await axios.post('http://localhost:5000/api/admin/send-notification', form);
+      alert('Notification sent to all nurses!');
+      setForm({ message: '' });
     } catch (err) {
       console.error(err);
       alert('Error sending notification.');
@@ -21,10 +22,9 @@ const ManageNotifications = () => {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold mb-4">Send Notification to Nurse</h2>
+      <h2 className="text-2xl font-bold mb-4">Send Notification to All Nurses</h2>
       <form onSubmit={handleSend} className="bg-white p-6 rounded shadow w-full max-w-md">
-        <input name="nurseName" placeholder="Nurse Name" onChange={handleChange} className="w-full mb-3 p-2 border rounded" />
-        <textarea name="message" placeholder="Your message" onChange={handleChange} className="w-full mb-3 p-2 border rounded" />
+        <textarea name="message" placeholder="Your message" onChange={handleChange} className="w-full mb-3 p-2 border rounded" value={form.message} />
         <button type="submit" className="bg-blue-700 text-white px-4 py-2 rounded">Send</button>
       </form>
     </div>

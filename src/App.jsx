@@ -1,20 +1,39 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import AboutUs from "./components/AboutUs";
 
-function App() {
-  const [message, setMessage] = useState('');
+function Home() {
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/hello')
-      .then(response => setMessage(response.data.message))
-      .catch(error => console.error("Error fetching data:", error));
+    axios
+      .get("http://localhost:5000/api/hello")
+      .then((res) => setMessage(res.data.message))
+      .catch((err) => console.error(err));
   }, []);
 
   return (
-    <div className="App">
-      <h1>React Frontend</h1>
-      <p>Backend Message: {message}</p>
+    <div className="container mx-auto p-6">
+      <h1 className="text-3xl font-bold mb-4">Home Page</h1>
+      <p className="mb-4">Backend Message: {message}</p>
+      <Link
+        to="/about"
+        className="bg-[#004f85] text-white px-4 py-2 rounded hover:bg-[#007bff] transition"
+      >
+        Go to About Us
+      </Link>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<AboutUs />} />
+      </Routes>
+    </Router>
   );
 }
 

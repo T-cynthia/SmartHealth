@@ -19,6 +19,11 @@ const newbornSchema = new mongoose.Schema({
   bloodType: String,
   deliveryMethod: String,
   doctor: String,
+  placeOfBirth: {
+    district: String,
+    sector: String,
+    cell: String
+  },
 
   motherName: String,
   motherPhone: String,

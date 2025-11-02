@@ -5,6 +5,7 @@ import { AuthProvider } from './AuthContext';
 import Navbar from './component/Navbar';
 import Homepage from './component/Homepage';
 import ContactPage from './component/ContactPage';
+import AboutUs from './component/AboutUs';
 
 // Admin
 import AdminLogin from './admin/AdminLogin';
@@ -34,6 +35,7 @@ import ParentRoute from './parent/ParentRoute';
 import BookConsultation from './parent/BookConsultation';
 import HealthyTips from './parent/HealthyTips';
 import Certificate from './parent/Certificate';
+import VaccinationCertificate from './parent/VaccinationCertificate';
 import ParentNotification from './parent/ParentNotification';
 
 
@@ -47,6 +49,7 @@ function App() {
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<Homepage />} />
+          <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContactPage />} />
 
           {/* Admin Routes */}
@@ -82,6 +85,7 @@ function App() {
             <Route path="book-consultation" element={<BookConsultation />} />
             <Route path="healthy-tips" element={<HealthyTips />} />
             <Route path="certificate" element={<Certificate />} />
+            <Route path="vaccination-certificate" element={<VaccinationCertificate />} />
             <Route path="notifications" element={<ParentNotification />} />
           </Route>
         </Routes>

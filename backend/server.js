@@ -5,16 +5,15 @@ require('dotenv').config();
 const app = require('./app');
 const connectToMongo = require('./config/db');
 const cron = require('node-cron');
-const Parent = require('./models/Parent');
-const nodemailer = require('nodemailer');
+const Newborn = require('./models/Newborn');
+const africastalking = require('africastalking');
 
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'sayinzogae@gmail.com',
-    pass: 'fqib qxxq mory ewxa' // ⚠️ Don't commit this in real apps!
-  }
-});
+const credentials = {
+  apiKey: process.env.AT_API_KEY || 'your_api_key_here',
+  username: process.env.AT_USERNAME || 'your_username_here'
+};
+
+const sms = africastalking(credentials).SMS;
 
 const PORT = process.env.PORT || 5000;
 
@@ -23,26 +22,39 @@ const PORT = process.env.PORT || 5000;
   app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
 })();
 
-// 🕒 Daily reminder at 9 AM
+// 🕒 Daily reminder at 9 AM for upcoming vaccines
 cron.schedule('0 9 * * *', async () => {
   try {
-    const parents = await Parent.find({});
-    const today = new Date().toISOString().split('T')[0];
+    const newborns = await Newborn.find({});
+    const today = new Date();
+    const reminderDate = new Date(today);
+    reminderDate.setDate(today.getDate() + 3); // Remind 3 days before
 
-    for (const parent of parents) {
-      const dob = new Date(parent.baby.dateOfBirth);
-      const reminderDate = new Date(dob);
-      reminderDate.setDate(dob.getDate() + 30);
-      const formattedReminder = reminderDate.toISOString().split('T')[0];
+    for (const newborn of newborns) {
+      if (newborn.vaccines) {
+        for (const vaccine of newborn.vaccines) {
+          if (vaccine.status === 'Upcoming') {
+            const dueDate = new Date(vaccine.dueDate);
+            if (dueDate <= reminderDate && dueDate >= today) {
+              const phoneNumber = newborn.motherPhone ? newborn.motherPhone : newborn.fatherPhone;
+              if (phoneNumber) {
+                // Ensure phone number starts with +250
+                const formattedPhone = phoneNumber.startsWith('+250') ? phoneNumber : `+250${phoneNumber.replace(/^0/, '')}`;
+                const message = `Hello ${newborn.motherName}, remember your child ${newborn.childName} has a vaccination for ${vaccine.name} on ${dueDate.toLocaleDateString()}. Please visit the health center. - SmartHealth`;
 
-      if (formattedReminder === today) {
-        await transporter.sendMail({
-          from: 'sayinzogae@gmail.com',
-          to: parent.email,
-          subject: 'Vaccination Reminder',
-          text: `Hello ${parent.fullName},\n\nIt's time for your baby ${parent.baby.fullName}'s first vaccination!\n\nSmartHealth`
-        });
-        console.log(`📧 Reminder sent to ${parent.email}`);
+                try {
+                  const result = await sms.send({
+                    to: [formattedPhone],
+                    message: message
+                  });
+                  console.log(`📱 SMS reminder sent to ${formattedPhone} for ${vaccine.name}`);
+                } catch (smsError) {
+                  console.error(`❌ Failed to send SMS to ${formattedPhone}:`, smsError);
+                }
+              }
+            }
+          }
+        }
       }
     }
   } catch (err) {

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const ParentDashboard = () => {
   const [baby, setBaby] = useState(null);
@@ -70,6 +71,19 @@ const ParentDashboard = () => {
       ) : (
         <p className="text-red-500">No baby data found for this parent.</p>
       )}
+
+      {/* Certificates */}
+      <div className="bg-white shadow-md rounded-lg p-6 mb-6">
+        <h3 className="text-xl font-semibold mb-4 text-blue-700">Certificates</h3>
+        <div className="flex space-x-4">
+          <Link to="/parent/certificate" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+            Birth Certificate
+          </Link>
+          <Link to="/parent/vaccination-certificate" className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+            Vaccination Certificate
+          </Link>
+        </div>
+      </div>
 
       {/* Notifications */}
       <div className="bg-white shadow-md rounded-lg p-6 mb-6">

@@ -16,14 +16,40 @@ function RegistrationPage() {
     height: '',
     bloodType: '',
     deliveryMethod: '',
-    doctor: ''
+    doctor: '',
+    placeOfBirth: {
+      district: '',
+      sector: '',
+      cell: ''
+    }
   });
 
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
+  const districts = [
+    'Gasabo', 'Kicukiro', 'Nyarugenge', 'Bugesera', 'Gatsibo', 'Kayonza', 'Kirehe', 'Ngoma', 'Nyagatare', 'Rwamagana',
+    'Burera', 'Gakenke', 'Gicumbi', 'Musanze', 'Rulindo', 'Gisagara', 'Huye', 'Kamonyi', 'Muhanga', 'Nyamagabe',
+    'Nyanza', 'Nyaruguru', 'Ruhango', 'Karongi', 'Ngororero', 'Nyabihu', 'Rubavu', 'Rusizi', 'Rutsiro'
+  ];
+
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    if (name.startsWith('placeOfBirth.')) {
+      const field = name.split('.')[1];
+      setFormData(prev => ({
+        ...prev,
+        placeOfBirth: {
+          ...prev.placeOfBirth,
+          [field]: value
+        }
+      }));
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -51,7 +77,12 @@ function RegistrationPage() {
         height: '',
         bloodType: '',
         deliveryMethod: '',
-        doctor: ''
+        doctor: '',
+        placeOfBirth: {
+          district: '',
+          sector: '',
+          cell: ''
+        }
       });
     } catch (err) {
       setErrorMessage('Something went wrong! Please try again.');
@@ -103,6 +134,16 @@ function RegistrationPage() {
             <input name="weight" value={formData.weight} onChange={handleChange} placeholder="Birth Weight (kg)" type="number" step="0.1" className="w-full p-3 border rounded" required />
             <input name="height" value={formData.height} onChange={handleChange} placeholder="Birth Height (cm)" type="number" step="0.1" className="w-full p-3 border rounded" required />
             <input name="bloodType" value={formData.bloodType} onChange={handleChange} placeholder="Blood Type (e.g., A+)" className="w-full p-3 border rounded" />
+
+            <h3 className="text-lg font-semibold text-gray-700 pt-4">Place of Birth</h3>
+            <select name="placeOfBirth.district" value={formData.placeOfBirth.district} onChange={handleChange} className="w-full p-3 border rounded" required>
+              <option value="">Select District</option>
+              {districts.map(district => (
+                <option key={district} value={district}>{district}</option>
+              ))}
+            </select>
+            <input name="placeOfBirth.sector" value={formData.placeOfBirth.sector} onChange={handleChange} placeholder="Sector" className="w-full p-3 border rounded" required />
+            <input name="placeOfBirth.cell" value={formData.placeOfBirth.cell} onChange={handleChange} placeholder="Cell" className="w-full p-3 border rounded" required />
           </div>
         </div>
 

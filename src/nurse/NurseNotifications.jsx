@@ -5,24 +5,25 @@ const NurseNotifications = () => {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
-    const fetchTodayNewborns = async () => {
+    const fetchNotifications = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/newborns/today');
-        const newborns = res.data;
+        const res = await axios.get('http://localhost:5000/api/admin/notifications');
+        const adminNotifications = res.data;
 
-        const formattedMessages = newborns.map((baby, index) => ({
+        const formattedMessages = adminNotifications.map((note, index) => ({
           id: index + 1,
-          message: `👶 ${baby.childName} was registered today to ${baby.motherName}.`
+          message: `📢 ${note.message}`,
+          date: new Date(note.date).toLocaleString()
         }));
 
         setNotifications(formattedMessages);
       } catch (err) {
         console.error('Failed to fetch notifications:', err);
-        setNotifications([{ id: 0, message: "Error fetching today's newborns." }]);
+        setNotifications([{ id: 0, message: "Error fetching notifications." }]);
       }
     };
 
-    fetchTodayNewborns();
+    fetchNotifications();
   }, []);
 
   return (

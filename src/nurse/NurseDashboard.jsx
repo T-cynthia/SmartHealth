@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../AuthContext';
+import axios from 'axios';
 
 const NurseDashboard = () => {
   const { user } = useAuth();
+  const [notificationCount, setNotificationCount] = useState(0);
+
+  useEffect(() => {
+    const fetchNotificationCount = async () => {
+      try {
+        const res = await axios.get('http://localhost:5000/api/admin/notifications');
+        setNotificationCount(res.data.length);
+      } catch (err) {
+        console.error('Failed to fetch notification count:', err);
+      }
+    };
+
+    fetchNotificationCount();
+  }, []);
 
   return (
     <div className="p-6 bg-gray-50">
@@ -22,7 +37,7 @@ const NurseDashboard = () => {
         </div>
         <div className="bg-white shadow-md p-4 rounded-lg">
           <h3 className="text-lg font-semibold">📨 Notifications</h3>
-          <p className="text-2xl text-blue-600 font-bold">2 New</p>
+          <p className="text-2xl text-blue-600 font-bold">{notificationCount} New</p>
         </div>
       </div>
 
