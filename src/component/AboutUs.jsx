@@ -171,9 +171,30 @@ const AboutUs = () => {
             <div>
               <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
               <div className="space-x-4">
-                <a href="#" className="hover:text-[#00bfa6]">Facebook</a>
-                <a href="#" className="hover:text-[#00bfa6]">Twitter</a>
-                <a href="#" className="hover:text-[#00bfa6]">Instagram</a>
+               <a
+  href="https://facebook.com"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  Facebook
+</a>
+
+<a
+  href="https://twitter.com"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  Twitter
+</a>
+
+<a
+  href="https://instagram.com"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  Instagram
+</a>
+
               </div>
             </div>
             <div>
